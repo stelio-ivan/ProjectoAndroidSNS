@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MySNS  Serviço de urgência</string>
+    <string name="name_activity_hospitais">Hospitais</string>
+    <string name="name_activity_historicos">Historico</string>
+    <string name="name_activity_hospital_detalhe">Detalhe hospital</string>
+    <string name="name_activity_historico_detalhe">Detalhe historico</string>
+    <string name="hospital_name_placeholder">Santa Maria</string>
+    <string name="hospital_list_item_type">Público</string>
+    <string name="image_view_hospital_list_item_thumb_description">Hospital Thumbnail</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="default_phone">920145465</string>
+    <string name="default_endereco">Rua Vasco da Gama 24 Lote 2</string>
+    <string name="default_email">hospital@hotmail.com</string>
+    <string name="default_url">www.hospital.pt</string>
+</resources>

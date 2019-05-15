@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_conta"
+        android:icon="@drawable/baseline_person_black_18dp"
+        android:title="Minha conta" />
+
+    <item android:id="@+id/nav_configuracoes"
+        android:icon="@drawable/baseline_settings_black_18dp"
+        android:title="Hospitais" />
+
+    <item android:id="@+id/nav_configuracoes"
+        android:icon="@drawable/baseline_settings_black_18dp"
+        android:title="Historico" />
+
+    <item android:id="@+id/nav_configuracoes"
+        android:icon="@drawable/baseline_settings_black_18dp"
+        android:title="Obter Sugestão" />
+
+    <item android:id="@+id/nav_configuracoes"
+        android:icon="@drawable/baseline_settings_black_18dp"
+        android:title="Configurações" />
+
+    <item android:id="@+id/nav_logout"
+        android:icon="@drawable/icon_exit"
+        android:title="Sair" />
+
+
+</menu>
