@@ -34,7 +34,7 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
     @Override
     public void onBindViewHolder(@NonNull HospitalListAdapter.ViewHolder viewHolder, int position) {
         viewHolder.mNome.setText(mHospitais.get(position).getNome());
-        viewHolder.mTipo.setText(mHospitais.get(position).getTipo());
+        viewHolder.mDistancia.setText(String.valueOf(mHospitais.get(position).getDistanciaKm()));
     }
 
     @Override
@@ -44,13 +44,13 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView mNome;
-        public TextView mTipo;
+        public TextView mDistancia;
         OnItemListener onItemListener;
 
         public ViewHolder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
             mNome = itemView.findViewById(R.id.hospital_list_item_name);
-            mTipo = itemView.findViewById(R.id.hospital_list_item_titleTempoMedioEspera);
+            mDistancia = itemView.findViewById(R.id.hospital_list_item_distancia);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

@@ -13,25 +13,24 @@ public class Urgencia {
     private String gravidade;
     private String tempoEspera;
 
-    public Urgencia(){
-
+    public Urgencia(String tipo, String gravidade, String tempoEspera){
+        this.tipo = tipo;
+        this.gravidade = gravidade;
+        this.tempoEspera = tempoEspera;
     }
 
     public void setGravidade(String gravidade) {
         this.gravidade = gravidade;
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void setTempoEspera(Date hora) {
-        DateFormat dateFormat= new SimpleDateFormat("HH:mm:ss");
-       tempoEspera= dateFormat.format(hora);
-    }
-
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    public void setTempoEspera(String tempoEspera) {
+        this.tempoEspera = tempoEspera;
+    }
+    
     public String getTempoEspera() {
         return tempoEspera;
     }

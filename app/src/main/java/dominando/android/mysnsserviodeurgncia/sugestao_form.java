@@ -46,6 +46,7 @@ public class sugestao_form extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_sugestao:
                 Intent intent = new Intent(getApplicationContext(), HospitalListActivity.class);
+                intent.putExtra("opcao", "sugestao");
                 startActivity(intent);
         }
     }
