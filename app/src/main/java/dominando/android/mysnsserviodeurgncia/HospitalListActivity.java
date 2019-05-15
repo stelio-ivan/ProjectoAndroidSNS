@@ -32,7 +32,9 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
         setContentView(R.layout.activity_hospital_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_hospitais);
+        toolbar.setTitle(R.string.tile_HospitalListActivity);
         setSupportActionBar(toolbar);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.hospital_activity);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);

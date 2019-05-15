@@ -247,6 +247,7 @@
 
 
     <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_sugestao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/card_viewGravidade"
@@ -254,7 +255,7 @@
         android:textSize="24sp"
         android:text="Submeter"
         android:background="@color/colorPrimary"
-
+        android:onClick="displaySugestao"
         />
         </RelativeLayout>
     </ScrollView>

@@ -3,6 +3,7 @@ package dominando.android.mysnsserviodeurgncia;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import dominando.android.mysnsserviodeurgncia.model.Historico;
 
@@ -16,4 +17,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), sugestao_form.class);
         startActivity(intent);
     }
+
+
 }

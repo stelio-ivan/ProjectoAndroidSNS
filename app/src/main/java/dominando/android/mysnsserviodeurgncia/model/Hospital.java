@@ -11,6 +11,7 @@ public class Hospital {
     private String email;
     private String url;
 
+
     public Hospital () {
 
     }

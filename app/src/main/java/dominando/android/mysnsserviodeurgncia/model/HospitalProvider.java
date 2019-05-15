@@ -55,4 +55,12 @@ public class HospitalProvider {
         }
         return null;
     }
+
+    public List<Hospital> getSugestao() {
+        List<Hospital> new_list = new ArrayList<>();
+       for(int idx = 0; idx < 3; idx++){
+           new_list.add(hospitalData.get(idx));
+       }
+        return  new_list;
+    }
 }

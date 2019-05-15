@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MySNS  Serviço de urgência</string>
-    <string name="name_activity_hospitais">Hospitais</string>
+    <string name="tile_HospitalListActivity">Hospitais</string>
+    <string name="tile_HistoricoListActivity">Historico</string>
+    <string name="tile_SugestaoHospitais">Sugestão</string>
     <string name="name_activity_historicos">Historico</string>
     <string name="name_activity_hospital_detalhe">Detalhe hospital</string>
     <string name="name_activity_historico_detalhe">Detalhe historico</string>

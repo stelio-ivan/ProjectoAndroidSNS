@@ -50,7 +50,7 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
         public ViewHolder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
             mNome = itemView.findViewById(R.id.hospital_list_item_name);
-            mTipo = itemView.findViewById(R.id.hospital_list_item_type);
+            mTipo = itemView.findViewById(R.id.hospital_list_item_titleTempoMedioEspera);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);
