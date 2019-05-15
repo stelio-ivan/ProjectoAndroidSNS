@@ -56,11 +56,12 @@ public class HospitalProvider {
         return null;
     }
 
-    public List<Hospital> getSugestao() {
-        List<Hospital> new_list = new ArrayList<>();
-       for(int idx = 0; idx < 3; idx++){
-           new_list.add(hospitalData.get(idx));
-       }
-        return  new_list;
-    }
+//    public List<Hospital> getSugestao(final String gravidade, final String tipoUrgencia){
+//        hospitalData.stream().filter(hospital->hospital.getUrgencia().getGravidade().equals(gravidade)
+//                && hospital.getUrgencia().getTipo().equals(tipoUrgencia))
+//                .sorted((hospitalA, hospitalB)->hospitalB.getDistanciaKm()-hospitalA.getDistanciaKm());
+//
+//    }
+
+
 }
