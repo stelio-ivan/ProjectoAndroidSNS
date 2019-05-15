@@ -5,7 +5,7 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hospital {
+public class Hospital implements Comparable<Hospital>{
     private String uuid;
     private String nome;
     private String tipo;
@@ -68,5 +68,17 @@ public class Hospital {
 
     public int getDistanciaKm() {
         return distanciaKm;
+    }
+
+
+    @Override
+    public int compareTo(Hospital o) {
+        if(distanciaKm>o.distanciaKm){
+            return 1;
+        }else if(distanciaKm<o.distanciaKm){
+            return  -1;
+        }else {
+            return 0;
+        }
     }
 }
