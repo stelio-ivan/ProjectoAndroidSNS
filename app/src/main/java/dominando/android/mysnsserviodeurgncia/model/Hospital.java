@@ -42,14 +42,15 @@ public class Hospital implements Comparable<Hospital>{
         return this.urgencias;
     }
 
-    public Urgencia getUrgencia(String tipo){
+    public Urgencia getUrgencia(final String gravidadeUrgencia, final String tipoUrgencia){
         for(int idx = 0; idx < urgencias.size(); idx++) {
-            if(urgencias.get(idx).getTipo().equals("tipo")){
+            if(urgencias.get(idx).getTipo().equals(tipoUrgencia) && urgencias.get(idx).getGravidade().equals(gravidadeUrgencia) ){
                 return urgencias.get(idx);
             }
         }
         return null;
     }
+
     public void setUrgencia(Urgencia urgencia) {
         urgencias.add(urgencia);
     }

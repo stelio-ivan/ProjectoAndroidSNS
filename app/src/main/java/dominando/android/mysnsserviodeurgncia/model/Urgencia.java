@@ -32,7 +32,7 @@ public class Urgencia {
     }
     
     public String getTempoEspera() {
-        return tempoEspera;
+        return this.tempoEspera;
     }
 
     public String getGravidade() {

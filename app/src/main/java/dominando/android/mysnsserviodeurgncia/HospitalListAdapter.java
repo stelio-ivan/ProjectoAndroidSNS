@@ -13,11 +13,19 @@ import android.widget.TextView;
 import java.util.List;
 
 import dominando.android.mysnsserviodeurgncia.model.Hospital;
+import dominando.android.mysnsserviodeurgncia.model.Urgencia;
 
 public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapter.ViewHolder> {
 
     private List<Hospital> mHospitais;
     private OnItemListener mOnItemListener;
+    private Urgencia mUrgencia;
+
+    public HospitalListAdapter(List<Hospital> mHospitais, String gravidade, String tipoUrgencia, OnItemListener onItemListener) {
+        this.mHospitais = mHospitais;
+        this.mOnItemListener = onItemListener;
+        mUrgencia = new Urgencia(tipoUrgencia, gravidade, "00:00:00");
+    }
 
     public HospitalListAdapter(List<Hospital> mHospitais, OnItemListener onItemListener) {
         this.mHospitais = mHospitais;
@@ -35,6 +43,10 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
     public void onBindViewHolder(@NonNull HospitalListAdapter.ViewHolder viewHolder, int position) {
         viewHolder.mNome.setText(mHospitais.get(position).getNome());
         viewHolder.mDistancia.setText(String.valueOf(mHospitais.get(position).getDistanciaKm()));
+        //confirmar que a acção foi despoletado pelo btn submeter sugestao
+        if(mUrgencia != null) {
+            viewHolder.mTempo.setText(new StringBuilder().append(mHospitais.get(position).getUrgencia(mUrgencia.getGravidade(), mUrgencia.getTipo()).getTempoEspera()).append(" h").toString());
+        }
     }
 
     @Override
@@ -45,12 +57,14 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView mNome;
         public TextView mDistancia;
+        public TextView mTempo;
         OnItemListener onItemListener;
 
         public ViewHolder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
             mNome = itemView.findViewById(R.id.hospital_list_item_name);
             mDistancia = itemView.findViewById(R.id.hospital_list_item_distancia);
+            mTempo = itemView.findViewById(R.id.hospital_list_item_tempoMedio);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

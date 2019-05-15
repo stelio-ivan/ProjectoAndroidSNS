@@ -41,10 +41,6 @@ public class HistoricoListActivity extends AppCompatActivity implements Historic
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        //obter extra do emissor(sugestao_form)
-        String opcao = getIntent().getStringExtra("sugestao");
-
         //RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_historicos);
         historico = HistoricoProvider.getInstance().getHistorico();

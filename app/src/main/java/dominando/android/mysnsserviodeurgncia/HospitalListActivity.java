@@ -42,10 +42,23 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        hospitais = HospitalProvider.getInstance().getHospitais();
-
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new HospitalListAdapter(hospitais, this);
+
+        String opcao = "hospitais"; //valor default para carregar a activity_hospital_list.xml
+        String gravidadeUrgencia = "Grave";
+        String tipoUrgencia = "Geral";
+        //get StringExtra From emissor(susgestaoForm)
+        opcao = getIntent().getStringExtra("opcao");
+        if(opcao != null && opcao.equals("sugestao")){
+            System.out.println("A obter sugestao...");
+            hospitais = HospitalProvider.getInstance().getSugestao(gravidadeUrgencia, tipoUrgencia);
+            mAdapter = new HospitalListAdapter(hospitais, gravidadeUrgencia, tipoUrgencia, this);
+        } else {
+            System.out.println("A obter hospitais...");
+            hospitais = HospitalProvider.getInstance().getHospitais();
+            mAdapter = new HospitalListAdapter(hospitais, this);
+        }
+
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
