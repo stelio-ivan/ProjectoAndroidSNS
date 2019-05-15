@@ -10,6 +10,8 @@ public class Hospital {
     private String morada;
     private String email;
     private String url;
+    private  Urgencia urgencia;
+    private int distanciaKm;
 
     public Hospital () {
 
@@ -30,5 +32,13 @@ public class Hospital {
 
     public String getTipo() {
         return tipo;
+    }
+
+    public Urgencia getUrgencia() {
+        return urgencia;
+    }
+
+    public int getDistanciaKm() {
+        return distanciaKm;
     }
 }

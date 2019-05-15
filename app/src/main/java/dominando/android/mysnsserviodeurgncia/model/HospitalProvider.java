@@ -55,4 +55,13 @@ public class HospitalProvider {
         }
         return null;
     }
+
+//    public List<Hospital> getSugestao(final String gravidade, final String tipoUrgencia){
+//        hospitalData.stream().filter(hospital->hospital.getUrgencia().getGravidade().equals(gravidade)
+//                && hospital.getUrgencia().getTipo().equals(tipoUrgencia))
+//                .sorted((hospitalA, hospitalB)->hospitalB.getDistanciaKm()-hospitalA.getDistanciaKm());
+//
+//    }
+
+
 }
