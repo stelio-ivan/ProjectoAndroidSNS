@@ -22,8 +22,6 @@ public class hospital_detalhe_activity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_detalhe);
 
-        //obter paramentros
-        //getInComingIntent();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_hospital_detalhe);
         setSupportActionBar(toolbar);
@@ -40,20 +38,4 @@ public class hospital_detalhe_activity extends AppCompatActivity{
         });
     }
 
-    public void getInComingIntent() {
-        if(getIntent().hasExtra("nome_hospital")){
-            Log.d("TAG", "getInComingIntent: found intent extras");
-
-            String nome_hospital = getIntent().getStringExtra("nome_hospital");
-
-            setDataToActivity(nome_hospital);
-        }
-    }
-
-    public void setDataToActivity(String nome_hospital){
-        System.out.println("Nome: " + nome_hospital);
-        TextView tv_nome = (TextView) findViewById(R.id.hospital_list_item_name);
-        System.out.println("Nome view: " + tv_nome.getText());
-        tv_nome.setText(nome_hospital);
-    }
 }
