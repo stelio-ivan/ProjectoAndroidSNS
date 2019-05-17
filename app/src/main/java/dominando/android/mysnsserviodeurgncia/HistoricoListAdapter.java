@@ -32,6 +32,8 @@ public class HistoricoListAdapter extends RecyclerView.Adapter<HistoricoListAdap
         viewHolder.mCheckIn.setText(new StringBuilder().append(mHistorico.get(position).getDataCheckIn()).append(", ").append(mHistorico.get(position).getHoraCheckIn()).toString());
         ////--------
         viewHolder.mCheckOut.setText(new StringBuilder().append(mHistorico.get(position).getDataCheckOut()).append(", ").append(mHistorico.get(position).getHoraCheckOut()).toString());
+        ///----
+        viewHolder.mNomeHospital.setText(mHistorico.get(position).getNomeHospital());
     }
 
     @Override
@@ -43,6 +45,8 @@ public class HistoricoListAdapter extends RecyclerView.Adapter<HistoricoListAdap
         public TextView mCheckIn;
         ////--------
         public TextView mCheckOut;
+        /////---------
+        public TextView mNomeHospital;
         HistoricoListAdapter.OnItemListener onItemListener;
 
         public ViewHolder(@NonNull View itemView, HistoricoListAdapter.OnItemListener onItemListener) {
@@ -50,6 +54,8 @@ public class HistoricoListAdapter extends RecyclerView.Adapter<HistoricoListAdap
             mCheckIn = itemView.findViewById(R.id.historico_value_checkIn);
             ///---------
             mCheckOut = itemView.findViewById(R.id.historico_value_checkOut);
+            ////------
+            mNomeHospital = itemView.findViewById(R.id.nome_hospital);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/nav_conta"
-        android:icon="@drawable/baseline_person_black_18dp"
-        android:title="Minha conta" />
+    <group android:id="@+id/conta">
+        <item android:id="@+id/nav_conta"
+            android:icon="@drawable/baseline_person_black_18dp"
+            android:title="Minha conta" />
+    </group>
 
-    <item android:id="@+id/nav_configuracoes"
-        android:icon="@drawable/baseline_settings_black_18dp"
-        android:title="Hospitais" />
+    <group android:id="@+id/nav_hospitais">
+        <item android:id="@+id/nav_hospitais"
+            android:icon="@drawable/icon_hospital"
+            android:title="Hospitais"
+            />
+    </group>
 
-    <item android:id="@+id/nav_configuracoes"
-        android:icon="@drawable/baseline_settings_black_18dp"
-        android:title="Historico" />
+    <group android:id="@+id/nav_historico">
+        <item android:id="@+id/nav_historico"
+            android:icon="@drawable/icon_list"
+            android:title="Historico" />
+    </group>
 
-    <item android:id="@+id/nav_configuracoes"
-        android:icon="@drawable/baseline_settings_black_18dp"
-        android:title="Obter Sugestão" />
+    <group android:id="@+id/nav_sugestao">
+        <item android:id="@+id/nav_sugestao"
+            android:icon="@drawable/icon_info"
+            android:title="Obter Sugestão" />
+    </group>
 
-    <item android:id="@+id/nav_configuracoes"
-        android:icon="@drawable/baseline_settings_black_18dp"
-        android:title="Configurações" />
+    <group android:id="@+id/nav_configuracoes">
+        <item android:id="@+id/nav_configuracoes"
+            android:icon="@drawable/baseline_settings_black_18dp"
+            android:title="Configurações" />
+    </group>
 
-    <item android:id="@+id/nav_logout"
-        android:icon="@drawable/icon_exit"
-        android:title="Sair" />
+    <group android:id="@+id/nav_logout">
+        <item android:id="@+id/nav_logout"
+            android:icon="@drawable/icon_exit"
+            android:title="Sair" />
+    </group>
 
 
 </menu>
