@@ -7,19 +7,24 @@ import java.time.format.DateTimeFormatter;
 
 public class Historico {
     private String uuid;
+    private String nomeHospital;
     private LocalTime hora;
     private LocalDate data;
     private CheckIn checkIn;
     private CheckOut checkOut;
 
-    public Historico(String uuid) {
+    public Historico(String uuid, String nomeHospital) {
         this.uuid = uuid;
+        this.nomeHospital = nomeHospital;
     }
 
     public String getUuid() {
         return uuid;
     }
 
+    public String getNomeHospital() {
+        return this.nomeHospital;
+    }
     public void CheckIn() {
         this.checkIn = new CheckIn(true);
     }

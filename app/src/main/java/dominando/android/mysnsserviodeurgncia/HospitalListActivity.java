@@ -2,6 +2,8 @@ package dominando.android.mysnsserviodeurgncia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,14 +11,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
 import dominando.android.mysnsserviodeurgncia.model.Hospital;
 import dominando.android.mysnsserviodeurgncia.model.HospitalProvider;
 
-public class HospitalListActivity extends AppCompatActivity implements HospitalListAdapter.OnItemListener  {
+public class HospitalListActivity extends AppCompatActivity implements HospitalListAdapter.OnItemListener, NavigationView.OnNavigationItemSelectedListener{
 
     List<Hospital> hospitais;
     RecyclerView mRecyclerView;
@@ -53,6 +57,7 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
             System.out.println("A obter sugestao...");
             hospitais = HospitalProvider.getInstance().getSugestao(gravidadeUrgencia, tipoUrgencia);
             mAdapter = new HospitalListAdapter(hospitais, gravidadeUrgencia, tipoUrgencia, this);
+            toolbar.setTitle(R.string.tile_SugestaoHospitais);
         } else {
             System.out.println("A obter hospitais...");
             hospitais = HospitalProvider.getInstance().getHospitais();
@@ -61,6 +66,9 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -74,12 +82,52 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
         startActivity(intent);
     }
 
-
+    //Função que despoleta o click no botao toggle do toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(mToggle.onOptionsItemSelected(item)){
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_navegacao, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+
+        switch (id) {
+            case R.id.nav_conta:
+                System.out.println("Clicked Conta.");
+                Toast.makeText(this, "This is Conta", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_hospitais:
+                Intent intent = new Intent(getApplicationContext(), HospitalListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_historico:
+                intent = new Intent(getApplicationContext(), HistoricoListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_sugestao:
+                intent = new Intent(getApplicationContext(), sugestao_form.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_configuracoes:
+                System.out.println("Clicked Conta.");
+                Toast.makeText(this, "This is Configurações", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_logout:
+                System.out.println("Clicked Conta.");
+                Toast.makeText(this, "This is Logout", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return false;
     }
 }

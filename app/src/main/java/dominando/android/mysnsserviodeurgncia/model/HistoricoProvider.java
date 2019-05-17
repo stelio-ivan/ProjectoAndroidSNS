@@ -25,16 +25,16 @@ public class HistoricoProvider {
     private List<Historico> historicolData = new ArrayList<>();
 
     private void initializeData() {
-        Historico hist1 = new Historico("001");
+        Historico hist1 = new Historico("001", "Santa Maria");
         hist1.CheckIn();
         hist1.CheckOut();
-        Historico hist2 = new Historico("002");
+        Historico hist2 = new Historico("002", "São Jose");
         hist2.CheckIn();
         hist2.CheckOut();
-        Historico hist3 = new Historico("003");
+        Historico hist3 = new Historico("003", "São Jose");
         hist3.CheckIn();
         hist3.CheckOut();
-        Historico hist4 = new Historico("004");
+        Historico hist4 = new Historico("004", "Santa Maria");
         hist4.CheckIn();
         hist4.CheckOut();
 

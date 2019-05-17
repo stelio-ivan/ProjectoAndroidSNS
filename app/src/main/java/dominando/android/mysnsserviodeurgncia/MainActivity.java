@@ -14,9 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //Pode-se alterar o hospital_list_item por uma outra activity que pretenda testar
-       // Intent intent = new Intent(getApplicationContext(), HospitalListActivity.class);
-        //startActivity(intent);
-        setContentView(R.layout.activity_mapa);
+        Intent intent = new Intent(getApplicationContext(), HospitalListActivity.class);
+        startActivity(intent);
+        //setContentView(R.layout.activity_mapa);
     }
 
 
