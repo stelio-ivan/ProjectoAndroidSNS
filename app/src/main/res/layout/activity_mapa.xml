@@ -21,9 +21,8 @@
 
         android:id="@+id/tool_bar_Mapa"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@color/primaryColor"
-
         app:title="Mapa"
         app:titleTextColor="@color/primaryTextColor"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -47,9 +46,9 @@
 
     <ImageView
         android:id="@+id/imageMapaStaMaria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/mapa_sta_maria"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/mapa_sta_maria2"
 
         />
 
@@ -82,7 +81,7 @@
         android:layout_below="@id/text_sta_Maria"/>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/line1"
@@ -90,68 +89,78 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:background="@color/secondaryColor"
 
         >
 
-        <LinearLayout
-            android:id="@+id/ll_1"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_centerInParent="true">
 
-            >
 
-            <ImageView
-                android:id="@+id/ir"
+            <LinearLayout
+                android:id="@+id/ll_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/baseline_directions_black_18dp"
-                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
 
-                />
+                >
 
-            <TextView
+                <ImageView
+                    android:id="@+id/ir"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/baseline_dirwhite"
+                    android:layout_gravity="center_horizontal"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Direcoes"
+                    android:textColor="@android:color/black" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="Direcoes"
-                android:textColor="@android:color/black" />
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_toRightOf="@+id/ll_1"
-            android:paddingLeft="40dp"
-            android:layout_centerHorizontal="true"
-            >
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/ll_1"
+                android:paddingLeft="40dp"
+                android:layout_centerHorizontal="true"
+                >
 
 
-            <ImageView
-                android:id="@+id/partilhar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/baseline_share_black_18dp"
-                android:layout_gravity="center_horizontal"
-                />
+                <ImageView
+                    android:id="@+id/partilhar"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/baseline_sharewhite"
+                    android:layout_gravity="center_horizontal"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Partilhar"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="Partilhar"/>
 
 
 
-        </LinearLayout>
+            </LinearLayout>
 
+
+
+        </RelativeLayout>
 
 
 
@@ -220,7 +229,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/textSite"
                         android:text="chln.pt"
-                        android:textColor="@android:color/black"
+
+                        android:textColor="@android:color/holo_blue_light"
                         android:textSize="18sp"/>
 
 
