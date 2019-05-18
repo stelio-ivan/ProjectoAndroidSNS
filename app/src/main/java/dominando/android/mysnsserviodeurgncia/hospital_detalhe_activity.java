@@ -38,4 +38,16 @@ public class hospital_detalhe_activity extends AppCompatActivity{
         });
     }
 
+    public void displayMapa(View view) {
+        switch (view.getId()) {
+            case R.id.icon_mapa:
+                Intent intent = new Intent(getApplicationContext(), Mapa.class);
+                startActivity(intent);
+                break;
+            case R.id.l_l_contato:
+                intent = new Intent(getApplicationContext(), Mapa.class);
+                startActivity(intent);
+        }
+    }
+
 }

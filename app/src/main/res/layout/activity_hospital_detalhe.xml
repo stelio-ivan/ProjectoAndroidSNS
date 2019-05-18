@@ -64,7 +64,8 @@
             android:layout_height="65dp"
             android:layout_alignParentRight="true"
             android:padding="12dp"
-            android:src="@drawable/icon_mapa"/>
+            android:src="@drawable/icon_mapa"
+            android:onClick="displayMapa"/>
 
             <!-- BOTOES -->
             <LinearLayout
@@ -168,7 +169,8 @@
                     android:layout_below="@id/line_1"
                     android:background="@android:color/white"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="8dp"
+                    android:onClick="displayMapa">
 
                     <ImageView
                         android:id="@+id/icon_contato"
