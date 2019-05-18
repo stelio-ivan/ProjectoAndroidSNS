@@ -8,293 +8,259 @@
     android:id="@+id/activity_mapa">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <LinearLayout
-        android:id="@+id/LinearTool"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-    <android.support.v7.widget.Toolbar
-
-        android:id="@+id/tool_bar_Mapa"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primaryColor"
-
-        app:title="Mapa"
-        app:titleTextColor="@color/primaryTextColor"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
-
-
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/LinearTool"
-
-        >
-    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-    <ImageView
-        android:id="@+id/imageMapaStaMaria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/mapa_sta_maria"
-
-        />
-
-
-
-
-
-
-
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hospital Santa Maria"
-        android:textStyle="bold"
-        android:textSize="24dp"
-        android:textColor="@android:color/black"
-        android:id="@+id/text_sta_Maria"
-        android:padding="10dp"
-        android:layout_below="@id/imageMapaStaMaria"
-        />
-
-
-    <View
-        android:id="@+id/line1"
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"
-        android:layout_below="@id/text_sta_Maria"/>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/line1"
-        android:id="@+id/linear_icons"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-
-        >
-
         <LinearLayout
-            android:id="@+id/ll_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-            >
-
-            <ImageView
-                android:id="@+id/ir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/baseline_directions_black_18dp"
-                android:layout_gravity="center_horizontal"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Direcoes"
-                android:textColor="@android:color/black" />
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_toRightOf="@+id/ll_1"
-            android:paddingLeft="40dp"
-            android:layout_centerHorizontal="true"
-            >
-
-
-            <ImageView
-                android:id="@+id/partilhar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/baseline_share_black_18dp"
-                android:layout_gravity="center_horizontal"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Partilhar"/>
-
-
-
-        </LinearLayout>
-
-
-
-
-
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"
-        android:layout_below="@id/linear_icons"
-        android:id="@+id/linha2"
-        />
-                //lugar
-
-        <LinearLayout
+            android:id="@+id/LinearTool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/ll_lugar"
-            android:layout_below="@id/linha2"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/baseline_place_black_48dp"
-                />
-            <TextView
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tool_bar_Mapa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textPlace"
-                android:text="Av. Prof. Egas Moniz s/n, 1649-035 Lisboa"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"/>
-
-
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/primaryColor"
+                app:title="Mapa"
+                app:titleTextColor="@color/primaryTextColor"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </LinearLayout>
 
-                //site
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LinearTool"
+            >
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageMapaStaMaria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mapa_sta_maria"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hospital Santa Maria"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center"
+                    android:id="@+id/text_sta_Maria"
+                    android:padding="10dp"
+                    android:layout_below="@id/imageMapaStaMaria"
+                    />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="#c0c0c0"
+                    android:layout_below="@id/text_sta_Maria"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/line1"
+                    android:id="@+id/linear_icons"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/ll_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <ImageView
+                            android:id="@+id/ir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/baseline_directions_black_18dp"
+                            android:layout_gravity="center_horizontal"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Direcoes"
+                            android:textColor="@android:color/black" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@+id/ll_1"
+                        android:paddingLeft="40dp"
+                        android:layout_centerHorizontal="true"
+                        >
+
+                        <ImageView
+                            android:id="@+id/partilhar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/baseline_share_black_18dp"
+                            android:layout_gravity="center_horizontal"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:text="Partilhar"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="2dp"
                     android:background="#c0c0c0"
-                    android:layout_below="@id/ll_lugar"
-                    android:id="@+id/linha3"
+                    android:layout_below="@id/linear_icons"
+                    android:id="@+id/linha2"
                     />
+                            //lugar
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/ll_site"
-                    android:layout_below="@id/linha3"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/baseline_public_black_48dp"/>
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textSite"
-                        android:text="chln.pt"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"/>
+                        android:orientation="horizontal"
+                        android:id="@+id/ll_lugar"
+                        android:layout_below="@id/linha2"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/baseline_place_black_48dp"
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textPlace"
+                            android:text="Av. Prof. Egas Moniz s/n, 1649-035 Lisboa"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
 
 
-                </LinearLayout>
-                // telefone
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="2dp"
-                    android:background="#c0c0c0"
-                    android:layout_below="@id/ll_site"
-                    android:id="@+id/linha4"
-                    />
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/ll_Telefone"
-                    android:layout_below="@id/ll_site"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/baseline_call_black_48dp"/>
-                    <TextView
+                    //site
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="#c0c0c0"
+                        android:layout_below="@id/ll_lugar"
+                        android:id="@+id/linha3"
+                        />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textCall"
-                        android:text="21 780 5000"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"/>
+                        android:orientation="horizontal"
+                        android:id="@+id/ll_site"
+                        android:layout_below="@id/linha3"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/baseline_public_black_48dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textSite"
+                            android:text="chln.pt"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
 
 
-                </LinearLayout>
-                //aberto
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="2dp"
-                    android:background="#c0c0c0"
-                    android:layout_below="@id/ll_Telefone"
-                    android:id="@+id/linha5"
-                    />
+                    </LinearLayout>
+                    // telefone
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="#c0c0c0"
+                        android:layout_below="@id/ll_site"
+                        android:id="@+id/linha4"
+                        />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/ll_Aberto"
-                    android:layout_below="@id/ll_Telefone"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/baseline_alarm_black_48dp"/>
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textAberto"
-                        android:text="Aberto agora"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"/>
+                        android:orientation="horizontal"
+                        android:id="@+id/ll_Telefone"
+                        android:layout_below="@id/ll_site"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/baseline_call_black_48dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textCall"
+                            android:text="21 780 5000"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
 
 
-                </LinearLayout>
+                    </LinearLayout>
+                    //aberto
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="#c0c0c0"
+                        android:layout_below="@id/ll_Telefone"
+                        android:id="@+id/linha5"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/ll_Aberto"
+                        android:layout_below="@id/ll_Telefone"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/baseline_alarm_black_48dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textAberto"
+                            android:text="Aberto agora"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
 
 
-
-            </RelativeLayout>
-
-        </ScrollView>
+                    </LinearLayout>
+                </RelativeLayout>
+            </ScrollView>
     </RelativeLayout>
-
-
-
 </android.support.v4.widget.DrawerLayout>
