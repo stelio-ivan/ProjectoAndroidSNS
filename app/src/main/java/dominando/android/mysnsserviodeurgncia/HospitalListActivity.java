@@ -1,5 +1,7 @@
 package dominando.android.mysnsserviodeurgncia;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -94,7 +97,40 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_navegacao, menu);
+        getMenuInflater().inflate(R.menu.search_view_hospitais, menu);
+
+        //getting the search view from the menu
+        MenuItem searchViewItem = menu.findItem(R.id.menuSearch_hospitais);
+
+        //getting search manager from systemservice
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        //getting the search view
+        final SearchView searchView = (SearchView) searchViewItem.getActionView();
+
+        //you can put a hint for the search input field
+        searchView.setQueryHint("Procurar hospital...");
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        //by setting it true we are making it iconified
+        //so the search input will show up after taping the search iconified
+        //if you want to make it visible all the time make it false
+        searchView.setIconifiedByDefault(true);
+
+        //here we will get the search query
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                //do the search here
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         return true;
     }
 

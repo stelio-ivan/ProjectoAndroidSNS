@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:id="@+id/conta">
         <item android:id="@+id/nav_conta"
@@ -7,32 +8,32 @@
             android:title="Minha conta" />
     </group>
 
-    <group android:id="@+id/nav_hospitais">
+    <group android:id="@+id/nav_hospitais_g">
         <item android:id="@+id/nav_hospitais"
             android:icon="@drawable/icon_hospital"
             android:title="Hospitais"
             />
     </group>
 
-    <group android:id="@+id/nav_historico">
+    <group android:id="@+id/nav_historico_g">
         <item android:id="@+id/nav_historico"
             android:icon="@drawable/icon_list"
             android:title="Historico" />
     </group>
 
-    <group android:id="@+id/nav_sugestao">
+    <group android:id="@+id/nav_sugestao_g">
         <item android:id="@+id/nav_sugestao"
             android:icon="@drawable/icon_info"
             android:title="Obter Sugestão" />
     </group>
 
-    <group android:id="@+id/nav_configuracoes">
+    <group android:id="@+id/nav_configuracoes_g">
         <item android:id="@+id/nav_configuracoes"
             android:icon="@drawable/baseline_settings_black_18dp"
             android:title="Configurações" />
     </group>
 
-    <group android:id="@+id/nav_logout">
+    <group android:id="@+id/nav_logout_g">
         <item android:id="@+id/nav_logout"
             android:icon="@drawable/icon_exit"
             android:title="Sair" />
