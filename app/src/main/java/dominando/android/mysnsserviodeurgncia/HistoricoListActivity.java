@@ -3,8 +3,6 @@ package dominando.android.mysnsserviodeurgncia;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,9 +17,7 @@ import android.view.View;
 import java.util.List;
 
 import dominando.android.mysnsserviodeurgncia.model.Historico;
-import dominando.android.mysnsserviodeurgncia.model.HistoricoProvider;
-import dominando.android.mysnsserviodeurgncia.model.Hospital;
-import dominando.android.mysnsserviodeurgncia.model.HospitalProvider;
+import dominando.android.mysnsserviodeurgncia.services.HistoricoProvider;
 
 public class HistoricoListActivity extends AppCompatActivity implements HistoricoListAdapter.OnItemListener {
 

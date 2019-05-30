@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -18,17 +19,26 @@ import android.view.MenuItem;
 import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.List;
 
 import dominando.android.mysnsserviodeurgncia.model.Hospital;
-import dominando.android.mysnsserviodeurgncia.model.HospitalProvider;
+import dominando.android.mysnsserviodeurgncia.services.Result;
+import dominando.android.mysnsserviodeurgncia.services.HospitalProvider;
+import dominando.android.mysnsserviodeurgncia.services.HospitalService;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HospitalListActivity extends AppCompatActivity implements HospitalListAdapter.OnItemListener, NavigationView.OnNavigationItemSelectedListener{
 
     List<Hospital> hospitais;
+    List<Hospital> hospitalModels = null;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+
+    Result resultRequest = null;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -51,6 +61,33 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
 
+        ///--- Implement API Call-----------------------------------------------------------------------
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(HospitalService.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        HospitalService service = retrofit.create(HospitalService.class);
+
+        Call<Result> call = service.getHospitais();
+
+        //Permitir todos os acessos a internet
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
+        StrictMode.setThreadPolicy(policy);
+
+        try {
+            Result resultRequest = call.execute().body();
+            hospitalModels = resultRequest.hospitals;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        for (HospitalModel hm: hospitalModels) {
+//            System.out.println(hm.getAddress());
+//        }
+
+        ///----/--------------------------------------------------------
+
         String opcao = "hospitais"; //valor default para carregar a activity_hospital_list.xml
         String gravidadeUrgencia = "Grave";
         String tipoUrgencia = "Geral";
@@ -58,12 +95,12 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
         opcao = getIntent().getStringExtra("opcao");
         if(opcao != null && opcao.equals("sugestao")){
             System.out.println("A obter sugestao...");
-            hospitais = HospitalProvider.getInstance().getSugestao(gravidadeUrgencia, tipoUrgencia);
+            hospitais = HospitalProvider.getInstance(hospitalModels).getSugestao(gravidadeUrgencia, tipoUrgencia);
             mAdapter = new HospitalListAdapter(hospitais, gravidadeUrgencia, tipoUrgencia, this);
             toolbar.setTitle(R.string.tile_SugestaoHospitais);
         } else {
             System.out.println("A obter hospitais...");
-            hospitais = HospitalProvider.getInstance().getHospitais();
+            hospitais = HospitalProvider.getInstance(hospitalModels).getHospitais();
             mAdapter = new HospitalListAdapter(hospitais, this);
         }
 
@@ -76,14 +113,11 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
 
     @Override
     public void onItemClick(int position) {
-        Log.d("tag", "OnClick(): Clicked");
-
-        Intent intent =  new Intent(this, hospital_detalhe_activity.class);
-        //System.out.println("Posicao: " + position);
-        //System.out.println("Nome: " + hospitais.get(position).getNome());
-        intent.putExtra("nome_hospital", hospitais.get(position).getNome());
+        Intent intent = new Intent(this, hospital_detalhe_activity.class);
+        intent.putExtra("hospital_selecionado", hospitalModels.get(position));
         startActivity(intent);
     }
+
 
     //Função que despoleta o click no botao toggle do toolbar
     @Override
