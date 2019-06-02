@@ -14,5 +14,8 @@
     <string name="default_phone">920145465</string>
     <string name="default_endereco">Rua Vasco da Gama 24 Lote 2</string>
     <string name="default_email">hospital@hotmail.com</string>
-    <string name="default_url">www.hospital.pt</string>
+    <string name="default_url">chln.pt</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

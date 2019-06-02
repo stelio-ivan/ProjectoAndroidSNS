@@ -1,8 +1,9 @@
-package dominando.android.mysnsserviodeurgncia.model;
+package dominando.android.mysnsserviodeurgncia.services;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import dominando.android.mysnsserviodeurgncia.model.Historico;
 
 public class HistoricoProvider {
 // Singleton pattern

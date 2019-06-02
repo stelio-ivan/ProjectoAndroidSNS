@@ -41,12 +41,9 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HospitalListAdapter.ViewHolder viewHolder, int position) {
-        viewHolder.mNome.setText(mHospitais.get(position).getNome());
-        viewHolder.mDistancia.setText(String.valueOf(mHospitais.get(position).getDistanciaKm()));
-        //confirmar que a acção foi despoletado pelo btn submeter sugestao
-        if(mUrgencia != null) {
-            viewHolder.mTempo.setText(new StringBuilder().append(mHospitais.get(position).getUrgencia(mUrgencia.getGravidade(), mUrgencia.getTipo()).getTempoEspera()).append(" h").toString());
-        }
+        viewHolder.mNome.setText(mHospitais.get(position).getName());
+        viewHolder.mDistancia.setText(String.valueOf(32) + " km");
+        viewHolder.mTempo.setText("00:30 h");
     }
 
     @Override

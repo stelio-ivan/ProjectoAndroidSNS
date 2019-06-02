@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dominando.android.mysnsserviodeurgncia">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Mapa"></activity>
+        <activity android:name=".Mapa" />
         <activity android:name=".Historico_detalhe_activity" />
         <activity android:name=".HistoricoListActivity" />
         <activity android:name=".hospital_detalhe_activity" />
