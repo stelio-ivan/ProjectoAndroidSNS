@@ -29,9 +29,9 @@ public class HistoricoListAdapter extends RecyclerView.Adapter<HistoricoListAdap
 
     @Override
     public void onBindViewHolder(@NonNull HistoricoListAdapter.ViewHolder viewHolder, int position) {
-        viewHolder.mCheckIn.setText(new StringBuilder().append(mHistorico.get(position).getDataCheckIn()).append(", ").append(mHistorico.get(position).getHoraCheckIn()).toString());
+        viewHolder.mCheckIn.setText(new StringBuilder().append(mHistorico.get(position).getDataCheckIn()));
         ////--------
-        viewHolder.mCheckOut.setText(new StringBuilder().append(mHistorico.get(position).getDataCheckOut()).append(", ").append(mHistorico.get(position).getHoraCheckOut()).toString());
+        viewHolder.mCheckOut.setText(new StringBuilder().append(mHistorico.get(position).getDataCheckOut()));
         ///----
         viewHolder.mNomeHospital.setText(mHistorico.get(position).getNomeHospital());
     }

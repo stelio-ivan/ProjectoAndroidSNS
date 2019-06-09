@@ -15,7 +15,12 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.UUID;
 
+import dominando.android.mysnsserviodeurgncia.model.CheckIn;
+import dominando.android.mysnsserviodeurgncia.model.CheckInProviderRealm;
+import dominando.android.mysnsserviodeurgncia.model.CheckOut;
+import dominando.android.mysnsserviodeurgncia.model.CheckOutProviderRealm;
 import dominando.android.mysnsserviodeurgncia.model.Hospital;
 
 public class hospital_detalhe_activity extends AppCompatActivity{
@@ -23,10 +28,16 @@ public class hospital_detalhe_activity extends AppCompatActivity{
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
 
+    private CheckInProviderRealm mCheckInProviderRealm;
+    private CheckOutProviderRealm mCheckOutProviderRealm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_detalhe);
+
+        mCheckInProviderRealm=CheckInProviderRealm.getInstance(this);
+        mCheckOutProviderRealm=CheckOutProviderRealm.getInstance(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_hospital_detalhe);
         setSupportActionBar(toolbar);
@@ -73,6 +84,8 @@ public class hospital_detalhe_activity extends AppCompatActivity{
     public void executarAcao(View view) {
         Uri uri = null;
         Intent intent = null;
+        String nomeHospital= String.valueOf(R.id.nome_hospital);
+        String uuid= UUID.randomUUID().toString();
         switch (view.getId()) {
             case R.id.l_l_endereco:
                 intent = new Intent(getApplicationContext(), Mapa.class);
@@ -89,6 +102,16 @@ public class hospital_detalhe_activity extends AppCompatActivity{
                 uri = Uri.parse("http://" + tv.getText().toString());
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                break;
+            case R.id.btn_checkIn:
+                CheckIn checkIn= new CheckIn(nomeHospital, uuid);
+
+                mCheckInProviderRealm.guardarCheckin(checkIn);
+                break;
+
+            case R.id.btn_checkOut:
+                CheckOut checkOut= new CheckOut(nomeHospital, uuid);
+                mCheckOutProviderRealm.guardarCheckout(checkOut);
                 break;
         }
     }

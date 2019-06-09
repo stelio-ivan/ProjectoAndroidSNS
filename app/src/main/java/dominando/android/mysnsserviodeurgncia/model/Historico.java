@@ -8,10 +8,9 @@ import java.time.format.DateTimeFormatter;
 public class Historico {
     private String uuid;
     private String nomeHospital;
-    private LocalTime hora;
-    private LocalDate data;
     private CheckIn checkIn;
     private CheckOut checkOut;
+
 
     public Historico(String uuid, String nomeHospital) {
         this.uuid = uuid;
@@ -25,27 +24,25 @@ public class Historico {
     public String getNomeHospital() {
         return this.nomeHospital;
     }
-    public void CheckIn() {
-        this.checkIn = new CheckIn(true);
-    }
 
-    public void CheckOut() {
-        this.checkOut = new CheckOut(true);
-    }
 
-    public String getHoraCheckIn(){
-        return checkIn.getHora();
-    }
+
 
     public String getDataCheckIn(){
         return checkIn.getData();
     }
 
-    public String getHoraCheckOut(){
-        return checkOut.getHora();
-    }
+
 
     public String getDataCheckOut(){
         return checkOut.getData();
+    }
+
+    public void setCheckIn(CheckIn checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setCheckOut(CheckOut checkOut) {
+        this.checkOut = checkOut;
     }
 }

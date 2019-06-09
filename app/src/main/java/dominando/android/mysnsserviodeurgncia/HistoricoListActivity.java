@@ -17,7 +17,8 @@ import android.view.View;
 import java.util.List;
 
 import dominando.android.mysnsserviodeurgncia.model.Historico;
-import dominando.android.mysnsserviodeurgncia.services.HistoricoProvider;
+import dominando.android.mysnsserviodeurgncia.model.HistoricoProvider;
+
 
 public class HistoricoListActivity extends AppCompatActivity implements HistoricoListAdapter.OnItemListener {
 
