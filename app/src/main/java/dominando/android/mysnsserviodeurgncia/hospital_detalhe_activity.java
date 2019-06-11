@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,17 +17,28 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import dominando.android.mysnsserviodeurgncia.model.Historico;
+import dominando.android.mysnsserviodeurgncia.model.HistoricoProvider;
 import dominando.android.mysnsserviodeurgncia.model.Hospital;
+
 
 public class hospital_detalhe_activity extends AppCompatActivity{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    private HistoricoProvider mHistoricoProvider;
+    Historico h1= new Historico();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_detalhe);
+        Log.d("tagsteste", "AAAAAAAAAAAAAAAAAAAAAAAAa");
+
+
+        mHistoricoProvider=HistoricoProvider.getInstance(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_hospital_detalhe);
         setSupportActionBar(toolbar);
@@ -73,6 +85,7 @@ public class hospital_detalhe_activity extends AppCompatActivity{
     public void executarAcao(View view) {
         Uri uri = null;
         Intent intent = null;
+
         switch (view.getId()) {
             case R.id.l_l_endereco:
                 intent = new Intent(getApplicationContext(), Mapa.class);
@@ -82,6 +95,8 @@ public class hospital_detalhe_activity extends AppCompatActivity{
                 TextView tv = (TextView) findViewById(R.id.value_contato);
                 uri = Uri.parse("tel:" + tv.getText().toString());
                 intent = new Intent(Intent.ACTION_DIAL, uri);
+
+
                 startActivity(intent);
                 break;
             case R.id.l_l_url:
@@ -89,6 +104,19 @@ public class hospital_detalhe_activity extends AppCompatActivity{
                 uri = Uri.parse("http://" + tv.getText().toString());
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                break;
+
+            case R.id.btn_checkIn:
+               h1=new Historico();
+               TextView nHospital=(TextView) findViewById(R.id.nome_hospital);
+               String nomeHospitalString=nHospital.getText().toString();
+               h1.setNomeHospital(nomeHospitalString);
+               h1.setCheckInDate();
+
+                break;
+            case  R.id.btn_checkOut:
+                h1.setCheckOutDate();
+                mHistoricoProvider.guardarHistorico(h1);
                 break;
         }
     }

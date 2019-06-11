@@ -14,10 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 
 import dominando.android.mysnsserviodeurgncia.model.Historico;
-import dominando.android.mysnsserviodeurgncia.services.HistoricoProvider;
+import dominando.android.mysnsserviodeurgncia.model.HistoricoProvider;
 
 public class HistoricoListActivity extends AppCompatActivity implements HistoricoListAdapter.OnItemListener {
 
@@ -26,10 +29,13 @@ public class HistoricoListActivity extends AppCompatActivity implements Historic
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico_list);
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_historico);
         setSupportActionBar(toolbar);
@@ -47,7 +53,7 @@ public class HistoricoListActivity extends AppCompatActivity implements Historic
 
         //RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_historicos);
-        historico = HistoricoProvider.getInstance().getHistorico();
+        historico = HistoricoProvider.getInstance(this).getHistoricos();
 
         mLayoutManager = new LinearLayoutManager(this);
         mAdapter = new HistoricoListAdapter(historico, this);
@@ -101,5 +107,6 @@ public class HistoricoListActivity extends AppCompatActivity implements Historic
         Intent intent =  new Intent(this, Historico_detalhe_activity.class);
         startActivity(intent);
     }
+
 
 }

@@ -20,8 +20,11 @@ import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import dominando.android.mysnsserviodeurgncia.model.Historico;
+import dominando.android.mysnsserviodeurgncia.model.HistoricoProvider;
 import dominando.android.mysnsserviodeurgncia.model.Hospital;
 import dominando.android.mysnsserviodeurgncia.services.Result;
 import dominando.android.mysnsserviodeurgncia.services.HospitalProvider;
@@ -33,10 +36,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HospitalListActivity extends AppCompatActivity implements HospitalListAdapter.OnItemListener, NavigationView.OnNavigationItemSelectedListener{
 
     List<Hospital> hospitais;
-    List<Hospital> hospitalModels = null;
+    List<Hospital> hospitalModels = new ArrayList<>();
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+
 
     Result resultRequest = null;
 
@@ -47,6 +51,7 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_list);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_hospitais);
         toolbar.setTitle(R.string.tile_HospitalListActivity);
@@ -172,6 +177,7 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
 
+
         switch (id) {
             case R.id.nav_conta:
                 System.out.println("Clicked Conta.");
@@ -197,6 +203,10 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
                 System.out.println("Clicked Conta.");
                 Toast.makeText(this, "This is Logout", Toast.LENGTH_SHORT).show();
                 break;
+
+
+
+
         }
         return false;
     }

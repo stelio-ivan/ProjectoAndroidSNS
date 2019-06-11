@@ -1,22 +1,26 @@
 package dominando.android.mysnsserviodeurgncia.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.UUID;
 
-public class Historico {
+import io.realm.RealmObject;
+import io.realm.Realm;
+
+
+public class Historico extends RealmObject {
     private String uuid;
     private String nomeHospital;
-    private LocalTime hora;
-    private LocalDate data;
-    private CheckIn checkIn;
-    private CheckOut checkOut;
 
-    public Historico(String uuid, String nomeHospital) {
-        this.uuid = uuid;
+
+    private Date checkInDate;
+    private Date checkOutDate;
+
+    public Historico( String nomeHospital) {
+        this.uuid = UUID.randomUUID().toString();
         this.nomeHospital = nomeHospital;
     }
+
+    public Historico(){}
 
     public String getUuid() {
         return uuid;
@@ -25,27 +29,28 @@ public class Historico {
     public String getNomeHospital() {
         return this.nomeHospital;
     }
-    public void CheckIn() {
-        this.checkIn = new CheckIn(true);
+
+
+
+
+
+    public Date getCheckOutDate() {
+        return checkOutDate;
     }
 
-    public void CheckOut() {
-        this.checkOut = new CheckOut(true);
+    public Date getCheckInDate() {
+        return checkInDate;
     }
 
-    public String getHoraCheckIn(){
-        return checkIn.getHora();
+    public void setNomeHospital(String nomeHospital) {
+        this.nomeHospital = nomeHospital;
     }
 
-    public String getDataCheckIn(){
-        return checkIn.getData();
+    public void setCheckInDate() {
+        this.checkInDate = new Date(System.currentTimeMillis());
     }
 
-    public String getHoraCheckOut(){
-        return checkOut.getHora();
-    }
-
-    public String getDataCheckOut(){
-        return checkOut.getData();
+    public void setCheckOutDate() {
+        this.checkOutDate = new Date(System.currentTimeMillis());
     }
 }

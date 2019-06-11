@@ -88,7 +88,7 @@
                     android:background="@color/colorPrimary"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    />
+                    android:onClick="executarAcao"/>
 
                 <Button
                     android:id="@+id/btn_checkOut"
@@ -98,7 +98,7 @@
                     android:text="Check-out"
                     android:textColor="@android:color/white"
                     android:background="@color/colorPrimary"
-                    />
+                    android:onClick="executarAcao"/>
 
             </LinearLayout>
 
