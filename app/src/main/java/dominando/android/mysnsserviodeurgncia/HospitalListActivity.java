@@ -3,10 +3,16 @@ package dominando.android.mysnsserviodeurgncia;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -33,13 +39,18 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class HospitalListActivity extends AppCompatActivity implements HospitalListAdapter.OnItemListener, NavigationView.OnNavigationItemSelectedListener{
+public class HospitalListActivity extends AppCompatActivity implements HospitalListAdapter.OnItemListener,
+        NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
     List<Hospital> hospitais;
     List<Hospital> hospitalModels = new ArrayList<>();
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+    LocationManager locationManager;
+
+
+
 
 
     Result resultRequest = null;
@@ -51,7 +62,8 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_list);
-
+        CheckPermission();
+        getLocation();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_hospitais);
         toolbar.setTitle(R.string.tile_HospitalListActivity);
@@ -87,6 +99,7 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
             e.printStackTrace();
         }
 
+
 //        for (HospitalModel hm: hospitalModels) {
 //            System.out.println(hm.getAddress());
 //        }
@@ -114,6 +127,29 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void CheckPermission() {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+        }
+        Location location = null;
+        onLocationChanged(location);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getLocation();
+    }
+
+    private void getLocation() {
+        try {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, this);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -209,5 +245,33 @@ public class HospitalListActivity extends AppCompatActivity implements HospitalL
 
         }
         return false;
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+
+        for (int position=0; position<hospitalModels.size(); position++){
+            hospitalModels.get(position).setDistanciaKm(location.getLatitude(), location.getLongitude());
+        }
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(HospitalListActivity.this, "Please Enable GPS and Internet", Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(this, "Enabled new provider!" + provider,
+                Toast.LENGTH_SHORT).show();
     }
 }

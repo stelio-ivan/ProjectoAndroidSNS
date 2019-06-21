@@ -30,6 +30,7 @@ public class HistoricoListActivity extends AppCompatActivity implements Historic
     RecyclerView.Adapter mAdapter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

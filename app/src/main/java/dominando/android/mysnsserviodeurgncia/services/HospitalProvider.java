@@ -34,6 +34,7 @@ public class HospitalProvider {
     }
 
     public List<Hospital> getHospitais() {
+        Collections.sort(hospitalData);
         return hospitalData;
     }
 

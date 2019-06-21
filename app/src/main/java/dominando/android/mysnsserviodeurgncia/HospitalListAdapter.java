@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.List;
 
 import dominando.android.mysnsserviodeurgncia.model.Hospital;
@@ -22,6 +24,7 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
     private Urgencia mUrgencia;
 
     public HospitalListAdapter(List<Hospital> mHospitais, String gravidade, String tipoUrgencia, OnItemListener onItemListener) {
+        Collections.sort(mHospitais);
         this.mHospitais = mHospitais;
         this.mOnItemListener = onItemListener;
         mUrgencia = new Urgencia(tipoUrgencia, gravidade, "00:00:00");
@@ -41,8 +44,9 @@ public class HospitalListAdapter extends RecyclerView.Adapter<HospitalListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HospitalListAdapter.ViewHolder viewHolder, int position) {
+
         viewHolder.mNome.setText(mHospitais.get(position).getName());
-        viewHolder.mDistancia.setText(String.valueOf(32) + " km");
+        viewHolder.mDistancia.setText(new DecimalFormat("#.##").format(mHospitais.get(position).getDistanciaKm())+"KM");
         viewHolder.mTempo.setText("00:30 h");
     }
 

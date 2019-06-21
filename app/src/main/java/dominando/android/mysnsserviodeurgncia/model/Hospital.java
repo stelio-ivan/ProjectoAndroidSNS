@@ -3,6 +3,7 @@ package dominando.android.mysnsserviodeurgncia.model;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -60,7 +61,9 @@ public class Hospital implements Comparable<Hospital>, Parcelable {
     @Expose
     private Boolean pilot;
     private List<Urgencia> urgencias;
-    private int distanciaKm;
+
+    private double distanciaKm;
+    double distanciaLat, distanciaLong;
 
     public Hospital () {
 
@@ -84,7 +87,7 @@ public class Hospital implements Comparable<Hospital>, Parcelable {
         this.institutionURL = institutionURL;
         this.pilot = pilot;
         this.urgencias = urgencias;
-        this.distanciaKm = distanciaKm;
+
     }
 
     //Implementação de Parcelable (Serve para passar o objeto hospital para um intent.putExtra())
@@ -126,7 +129,7 @@ public class Hospital implements Comparable<Hospital>, Parcelable {
         institutionURL = in.readString();
         byte tmpPilot = in.readByte();
         pilot = tmpPilot == 0 ? null : tmpPilot == 1;
-        distanciaKm = in.readInt();
+        //distanciaKm = in.readInt();
     }
 
     public static final Creator<Hospital> CREATOR = new Creator<Hospital>() {
@@ -298,12 +301,16 @@ public class Hospital implements Comparable<Hospital>, Parcelable {
         }
     }
 
-    public void setDistanciaKm(int distanciaKm) {
-        this.distanciaKm = distanciaKm;
+
+    public void setDistanciaKm(double latitude, double longitude) {
+        distanciaLat=this.latitude-latitude;
+        distanciaLong=this.longitude-longitude;
+        this.distanciaKm =Math.sqrt(Math.pow(distanciaLat, 2)+Math.pow(distanciaLong,2));
     }
 
-    public int getDistanciaKm() {
-        return distanciaKm;
+    public double getDistanciaKm() {
+
+        return  distanciaKm;
     }
 
 
@@ -361,6 +368,8 @@ public class Hospital implements Comparable<Hospital>, Parcelable {
         dest.writeByte((byte) (hasEmergency == null ? 0 : hasEmergency ? 1 : 2));
         dest.writeString(institutionURL);
         dest.writeByte((byte) (pilot == null ? 0 : pilot ? 1 : 2));
-        dest.writeInt(distanciaKm);
+        dest.writeDouble(distanciaKm);
     }
+
+
 }
