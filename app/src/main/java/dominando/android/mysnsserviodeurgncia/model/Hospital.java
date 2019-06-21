@@ -65,6 +65,7 @@ public class Hospital implements Comparable<Hospital>, Parcelable {
     private double distanciaKm;
     double distanciaLat, distanciaLong;
 
+
     public Hospital () {
 
     }
