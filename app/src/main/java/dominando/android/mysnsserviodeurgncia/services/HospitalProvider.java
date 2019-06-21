@@ -17,6 +17,7 @@ public class HospitalProvider {
     private List<Hospital> hospitalData;
 
     private HospitalProvider(List<Hospital> hospitals) {
+        Collections.sort(hospitals);
         this.hospitalData = hospitals;
         initializeData();
     }

@@ -1,6 +1,8 @@
 package dominando.android.mysnsserviodeurgncia;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -28,14 +31,16 @@ public class hospital_detalhe_activity extends AppCompatActivity{
     private ActionBarDrawerToggle mToggle;
     private HistoricoProvider mHistoricoProvider;
     Historico h1= new Historico();
-
+    Button buttonCheckIn;
+    Button buttonCheckOut;
+    Button buttonDeslocar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_detalhe);
-        Log.d("tagsteste", "AAAAAAAAAAAAAAAAAAAAAAAAa");
+
 
 
         mHistoricoProvider=HistoricoProvider.getInstance(this);
@@ -53,6 +58,15 @@ public class hospital_detalhe_activity extends AppCompatActivity{
                 onBackPressed(); // Implemented by activity
             }
         });
+
+        buttonDeslocar= (Button)findViewById(R.id.btn_deslocal);
+
+
+        buttonCheckIn=(Button)findViewById(R.id.btn_checkIn);
+        buttonCheckIn.setEnabled(false);
+
+        buttonCheckOut=(Button)findViewById(R.id.btn_checkOut);
+        buttonCheckOut.setEnabled(false);
 
         Hospital hospitalModel = null;
         if(getIntent().hasExtra("hospital_selecionado")){
@@ -106,7 +120,22 @@ public class hospital_detalhe_activity extends AppCompatActivity{
                 startActivity(intent);
                 break;
 
+            case  R.id.btn_deslocal:
+                Log.d("Deslocar", "fui clicado");
+                buttonDeslocar.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
+                buttonCheckOut.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                buttonDeslocar.setEnabled(false);
+                buttonCheckIn.setEnabled(true);
+                break;
+
+
+
             case R.id.btn_checkIn:
+               buttonCheckIn.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
+               buttonDeslocar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+               buttonCheckIn.setEnabled(false);
+               buttonCheckOut.setEnabled(true);
+
                h1=new Historico();
                TextView nHospital=(TextView) findViewById(R.id.nome_hospital);
                String nomeHospitalString=nHospital.getText().toString();
@@ -115,9 +144,21 @@ public class hospital_detalhe_activity extends AppCompatActivity{
 
                 break;
             case  R.id.btn_checkOut:
+                buttonDeslocar.setEnabled(true);
+                buttonCheckOut.setEnabled(false);
+                buttonCheckIn.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                buttonCheckOut.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
+
                 h1.setCheckOutDate();
                 mHistoricoProvider.guardarHistorico(h1);
+
                 break;
+        }
+    }
+
+    public void trocaCores(){
+        if(buttonCheckIn.isEnabled()){
+            buttonCheckIn.setBackgroundResource(R.color.colorPrimary);
         }
     }
 }

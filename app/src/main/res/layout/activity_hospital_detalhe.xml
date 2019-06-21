@@ -76,6 +76,7 @@
                     android:text="Deslocar"
                     android:textColor="@android:color/white"
                     android:background="@color/colorPrimary"
+                    android:onClick="executarAcao"
                     />
 
                 <Button

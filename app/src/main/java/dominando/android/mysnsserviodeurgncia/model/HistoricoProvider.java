@@ -83,7 +83,7 @@ public class HistoricoProvider {
     }
 
     public void guardarHistorico(Historico newhistorico){
-        Log.d("REALM DEBUG", "Transaction Init for adding movie '" + newhistorico.getNomeHospital() + "'");
+        Log.d("REALM DEBUG", "Transaction Init for adding hospital '" + newhistorico.getNomeHospital() + "'");
         realm.beginTransaction();
 
         Historico realmHistorico=realm.copyToRealm(newhistorico);
